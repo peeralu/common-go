@@ -1,4 +1,4 @@
-package awsSecretManager
+package secretManager
 
 import (
 	"context"

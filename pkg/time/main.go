@@ -2,7 +2,7 @@ package time
 
 import "time"
 
-func InitTimeZone(name string) {
+func NewTimeZone(name string) {
 	ict, err := time.LoadLocation(name)
 	if err != nil {
 		panic(err)
