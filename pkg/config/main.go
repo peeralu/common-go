@@ -1,4 +1,4 @@
-package cf
+package config
 
 import (
 	"log"
