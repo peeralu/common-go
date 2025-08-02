@@ -1,8 +1,8 @@
-package db
+package sql
 
 import "time"
 
-type DBConfig struct {
+type SQLConfig struct {
 	Host            string
 	Port            int
 	User            string

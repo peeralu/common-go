@@ -3,13 +3,12 @@ package sql
 import (
 	"fmt"
 
-	"github.com/peeralu/common-go/pkg/db"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
-func NewPostgreSQLDB(config db.DBConfig) *gorm.DB {
+func NewPostgreSQLDB(config SQLConfig) *gorm.DB {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=%s TimeZone=%s",
 		config.Host,
 		config.User,
