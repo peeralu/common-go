@@ -52,3 +52,14 @@ func Error(name string, message interface{}, fields ...zap.Field) {
 		log.Error(msg, fields...)
 	}
 }
+
+func Fatal(name string, message interface{}, fields ...zap.Field) {
+	switch v := message.(type) {
+	case error:
+		msg := fmt.Sprintf("[%s] %s", name, v.Error())
+		log.Fatal(msg, fields...)
+	case string:
+		msg := fmt.Sprintf("[%s] %s", name, v)
+		log.Fatal(msg, fields...)
+	}
+}
