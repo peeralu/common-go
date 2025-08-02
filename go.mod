@@ -5,6 +5,7 @@ go 1.24.5
 require (
 	github.com/aws/aws-sdk-go-v2/config v1.30.2
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.36.1
+	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/spf13/viper v1.20.1
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.30.1
@@ -39,7 +40,8 @@ require (
 	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
-	go.uber.org/multierr v1.9.0 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
+	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/crypto v0.32.0 // indirect
 	golang.org/x/sync v0.16.0 // indirect
 	golang.org/x/sys v0.29.0 // indirect
