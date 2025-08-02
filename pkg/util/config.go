@@ -7,11 +7,12 @@ import (
 	"github.com/spf13/viper"
 )
 
-func InitConfig[T any]() *T {
-	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
-	viper.AddConfigPath("/app")
+func InitConfig[T any](fileName string, fileType string, paths []string) *T {
+	viper.SetConfigName(fileName)
+	viper.SetConfigType(fileType)
+	for _, path := range paths {
+		viper.AddConfigPath(path)
+	}
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
