@@ -18,6 +18,33 @@ type SqlPGConfig struct {
 	ConnMaxLifetimeMinute uint16 `default:"60"`
 }
 
+func (c *SqlPGConfig) InitDefaults() {
+	if c.Host == "" {
+		c.Host = "localhost"
+	}
+	if c.User == "" {
+		c.User = "postgres"
+	}
+	if c.Name == "" {
+		c.Name = "postgres"
+	}
+	if c.SSLMode == "" {
+		c.SSLMode = "disable"
+	}
+	if c.TimeZone == "" {
+		c.TimeZone = "Asia/Bangkok"
+	}
+	if c.MaxOpenConns <= 0 {
+		c.MaxOpenConns = 10
+	}
+	if c.MaxIdleConns <= 0 {
+		c.MaxIdleConns = 5
+	}
+	if c.ConnMaxLifetimeMinute <= 0 {
+		c.ConnMaxLifetimeMinute = 60
+	}
+}
+
 func (c *SqlPGConfig) GetDSN() string {
 	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=%s TimeZone=%s",
 		c.Host,
