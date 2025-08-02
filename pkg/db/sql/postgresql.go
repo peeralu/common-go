@@ -8,17 +8,8 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-func NewPostgreSQLDB(config SQLConfig) *gorm.DB {
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=%s TimeZone=%s",
-		config.Host,
-		config.User,
-		config.Password,
-		config.Dbname,
-		config.Port,
-		config.SSLMode,
-		config.TimeZone,
-	)
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+func NewPostgreSQLDB(config SqlPGConfig) *gorm.DB {
+	db, err := gorm.Open(postgres.Open(config.GetDSN()), &gorm.Config{
 		Logger:                 logger.Default.LogMode(logger.Warn),
 		PrepareStmt:            true,
 		SkipDefaultTransaction: true,
@@ -35,7 +26,7 @@ func NewPostgreSQLDB(config SQLConfig) *gorm.DB {
 
 	sqlDB.SetMaxOpenConns(config.MaxOpenConns)
 	sqlDB.SetMaxIdleConns(config.MaxIdleConns)
-	sqlDB.SetConnMaxLifetime(config.ConnMaxLifetime)
+	sqlDB.SetConnMaxLifetime(config.GetConnMaxLifetime())
 
 	return db
 }
