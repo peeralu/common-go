@@ -1,4 +1,4 @@
-package time
+package util
 
 import "time"
 
@@ -7,6 +7,5 @@ func NewTimeZone(name string) {
 	if err != nil {
 		panic(err)
 	}
-
 	time.Local = ict
 }
